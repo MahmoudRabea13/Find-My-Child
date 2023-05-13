@@ -43,10 +43,9 @@
             </div>
         </div>
         <div class="footer">
-            <input type="file" id="upload" class="upload">
             <div class="select-mode">
-                <div class="mode Detect active-mode">Detect</div>
-                <div class="mode Recognize">Recognize</div>
+            <div class="mode Detect active-mode" onclick="document.getElementById('upload').click()">Upload Image</div>
+            <input type="file" id="upload" class="mode upload" style="display:none;">
             </div>
             <div class="text">
                 Abdelrhman Yaser
