@@ -19,8 +19,69 @@ document.addEventListener("click", (e)=>{
     }
 })
 
-let input = document.getElementById("input-img")
 
+upload = document.getElementById("upload");
+inputImg = document.getElementById("input");
+outputImg = document.getElementById("output");
+
+upload.addEventListener('change' , (e) => {
+    console.log(e)
+    const reader = new FileReader();
+    reader.onload = (e) => {
+    if (e.target){
+        //upload image
+        let img = document.createElement("img");
+        img.id = "img";
+        img.src = e.target.result;
+        //clean previous image
+        inputImg.innerHTML = " ";
+        //add  image 
+        inputImg.appendChild(img); 
+    }
+    };
+    //read&send the img
+    img_send =  e.target.files[0];
+    reader.readAsDataURL(img_send);
+    imgToFlask("input_img",img_send,"input_img","/input") 
+    });
+
+
+
+
+
+/* let input = document.getElementById("input-img")
 input.addEventListener("change", (e)=>{
-    document.querySelector(".upload-style").style.display = "none"
+    document.querySelector(".upload-style").style.display = "none";
 })
+ */
+
+
+
+function imgToFlask(name , data ,filename , route){
+    var xhr=new XMLHttpRequest();
+    var fd=new FormData();
+    fd.append(name,data ,filename);
+    xhr.onreadystatechange = function() {
+        if (xhr.status == 200) {
+            console.log('sent')
+        }
+        }; 
+    xhr.open("POST",route,true);
+    xhr.send(fd);
+    console.log(fd)
+};
+function checkIfImageExists(url, callback) {
+    const img = new Image();
+    img.src = url;
+    
+    if (img.complete) {
+        callback(true);
+    } else {
+        img.onload = () => {
+        callback(true);
+    };
+        img.onerror = () => {
+        callback(false);
+        };
+    }
+};
