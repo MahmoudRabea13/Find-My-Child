@@ -17,9 +17,9 @@ class FaceDetection():
             Dimensions.append(face)
         cv2.imwrite('Detected.jpg',img)
         return len(faces),Dimensions
-img = FaceDetection.detect_faces(FaceDetection,'./Faces/Mahmoud Rabea.jpg')
+# img = FaceDetection.detect_faces(FaceDetection,'../data/Ahmed/IMG_20201117_090902.jpg')
 
-#print(img[0]) # return the number of detected faces 
-#print(img[1]) #list of lists of dimensions of each detected face [x,y,w,h]
+# print(img[0]) # return the number of detected faces 
+# print(img[1]) #list of lists of dimensions of each detected face [x,y,w,h]
 #print(img[1][0]) #the dimensions of the first face detected
 #print(img[1][0][1]) # y of first face , likewise
