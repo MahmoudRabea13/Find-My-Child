@@ -20,32 +20,26 @@ def input():
         img = request.files.get('input_img')
         name = './static/Imgs/' + img.filename + '.jpg'
         img.save(name)
-        # print(img)
         X_try = cv2.imread('./static/imgs/input_img.jpg',0)
         n,dim = Face.detect_faces('./static/imgs/input_img.jpg')
-        faces= Face.detect_faces('./static/imgs/input_img.jpg')
         names = ['Ahmed','Rabea','Nasser','Dina','Abdlerhman']
-        # print(n)
         imgs_n = []
         pred = []
         for i in range(n):
             new_img = X_try[dim[i][1]:dim[i][1]+dim[i][3],dim[i][0]:dim[i][0]+dim[i][2]]
             new_img = cv2.resize(new_img,(64,64))
+            cv2.imwrite('./static/Imgs/output_img.jpg',new_img)
             imgs_n.append(new_img)
         imgs_n = np.array(imgs_n)
         ll = pca.preprocess_data(imgs_n)
         ll = pca.reduce_dim(ll)
         for i in range(n):
-            # y_hat = SVmmodel.predict(ll[i].reshape(1,-1))
             y_hat = Model.predict(ll[i,:])
             pred.append(names[y_hat]) 
-            # plt.title(pred[i])
-            # plt.imshow(imgs_n[i],cmap="gray")
-            # plt.show()
-        print(pred)
-        print(n)
+        # print(pred)
+        # print(n)
         result = [n ,pred]
-        print(result)
+        # print(result)
         return jsonify(result)
     else:
         return render_template('index.html')
