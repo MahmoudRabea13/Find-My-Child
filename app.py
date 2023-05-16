@@ -46,7 +46,7 @@ def input():
         print(n)
         result = [n ,pred]
         print(result)
-        return result
+        return jsonify(result)
     else:
         return render_template('index.html')
 

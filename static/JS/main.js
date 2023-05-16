@@ -55,7 +55,8 @@ function imgToFlask(name , data ,filename , route){
         if (xhr.status == 200) {
             var timestamp = new Date().getTime();
             console.log(xhr.responseText)
-            document.getElementById('detected').innerHTML = "Result"+ xhr.responseText;
+            document.getElementById('detected').innerHTML = "Number of detected faces:"+ JSON.parse(xhr.responseText)[0]
+            +"&nbsp; &nbsp; &nbsp;"+"Recognized:"+JSON.parse(xhr.responseText)[1];
             output = document.createElement('img')
             output.style.height= 'inherit';
             output.src = "./static/Imgs/output_img.jpg" +'?t=' + timestamp;
