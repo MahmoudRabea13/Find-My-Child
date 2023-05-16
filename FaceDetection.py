@@ -15,7 +15,7 @@ class FaceDetection():
             cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 2)
             face= [x,y,w,h]
             Dimensions.append(face)
-        cv2.imwrite('Detected.jpg',img)
+        cv2.imwrite('./static/Imgs/output.jpg',img)
         return len(faces),Dimensions
 # img = FaceDetection.detect_faces(FaceDetection,'../data/Ahmed/IMG_20201117_090902.jpg')
 

@@ -58,4 +58,13 @@ class NPCA():
         return np.dot(T1,T2)
     def reconstruct(self,X):
         return np.dot(X,self.eigen_vecs.T)
-    
+    def save_preprocessing(self):
+        data = [self.mu,self.std_dev]
+        np.save('pre',np.array(data))
+        np.save('vecs',np.array(self.eigen_vecs))
+        np.save('vals',np.array(self.eigen_vals))
+    def load_preprocessing(self):
+        data = np.load('pre.npy')
+        self.eigen_vals = np.load('vals.npy')
+        self.eigen_vecs = np.load('vecs.npy')
+        self.mu,self.std_dev = data[0,:],data[1,:]

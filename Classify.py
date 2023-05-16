@@ -3,7 +3,7 @@ import numpy as np
 class Classify():
     def __init__(self):
         self.means = 0
-        self.number = 0
+        self.number = 5
     def fit(self,X,y,number):
         M,N = X.shape
         means = np.zeros((number,N))
