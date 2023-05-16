@@ -31,6 +31,7 @@ upload.addEventListener('change' , (e) => {
     if (e.target){
         //upload image
         let img = document.createElement("img");
+        img.style.height= 'inherit';
         img.id = "img";
         img.src = e.target.result;
         //clean previous image
@@ -56,6 +57,7 @@ function imgToFlask(name , data ,filename , route){
             console.log(xhr.responseText)
             document.getElementById('detected').innerHTML = "Result"+ xhr.responseText;
             output = document.createElement('img')
+            output.style.height= 'inherit';
             output.src = "./static/Imgs/output_img.jpg" +'?t=' + timestamp;
             outputImg.innerHTML = " ";
             outputImg.appendChild(output); 
