@@ -28,7 +28,7 @@ def input():
         for i in range(n):
             new_img = X_try[dim[i][1]:dim[i][1]+dim[i][3],dim[i][0]:dim[i][0]+dim[i][2]]
             new_img = cv2.resize(new_img,(64,64))
-            cv2.imwrite('./static/Imgs/output_img.jpg',new_img)
+            # cv2.imwrite('./static/Imgs/output_img.jpg',new_img)
             imgs_n.append(new_img)
         imgs_n = np.array(imgs_n)
         ll = pca.preprocess_data(imgs_n)
@@ -38,6 +38,7 @@ def input():
             pred.append(names[y_hat]) 
         # print(pred)
         # print(n)
+        Face.save(pred)
         result = [n ,pred]
         # print(result)
         return jsonify(result)
