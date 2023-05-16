@@ -46,24 +46,19 @@ upload.addEventListener('change' , (e) => {
     });
 
 
-
-
-
-/* let input = document.getElementById("input-img")
-input.addEventListener("change", (e)=>{
-    document.querySelector(".upload-style").style.display = "none";
-})
- */
-
-
-
 function imgToFlask(name , data ,filename , route){
     var xhr=new XMLHttpRequest();
     var fd=new FormData();
     fd.append(name,data ,filename);
     xhr.onreadystatechange = function() {
         if (xhr.status == 200) {
-            console.log('sent')
+            var timestamp = new Date().getTime();
+            console.log(xhr.responseText)
+            document.getElementById('detected').innerHTML = "Result"+ xhr.responseText;
+            output = document.createElement('img')
+            output.src = "./static/Imgs/output_img.jpg" +'?t=' + timestamp;
+            outputImg.innerHTML = " ";
+            outputImg.appendChild(output); 
         }
         }; 
     xhr.open("POST",route,true);

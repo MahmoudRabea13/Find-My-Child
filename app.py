@@ -15,7 +15,7 @@ def main():
     pca.load_preprocessing()
     return render_template('index.html')
 @app.route('/input' , methods = ['POST', 'GET'] )
-def filter():
+def input():
     if request.method == 'POST':
         img = request.files.get('input_img')
         name = './static/Imgs/' + img.filename + '.jpg'
@@ -23,6 +23,7 @@ def filter():
         # print(img)
         X_try = cv2.imread('./static/imgs/input_img.jpg',0)
         n,dim = Face.detect_faces('./static/imgs/input_img.jpg')
+        faces= Face.detect_faces('./static/imgs/input_img.jpg')
         names = ['Ahmed','Rabea','Nasser','Dina','Abdlerhman']
         # print(n)
         imgs_n = []
@@ -42,9 +43,12 @@ def filter():
             # plt.imshow(imgs_n[i],cmap="gray")
             # plt.show()
         print(pred)
-        return render_template('main.html')
+        print(n)
+        result = [n ,pred]
+        print(result)
+        return result
     else:
-        return render_template('main.html')
+        return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
