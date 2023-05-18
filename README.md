@@ -51,7 +51,7 @@ Project description
 
 <div id='members'>
   
-Theteam
+Team meambers
 ============
 ### Project Submitted by 3rd year SBME2024 students 💉:
 
