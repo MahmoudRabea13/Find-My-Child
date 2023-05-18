@@ -34,4 +34,4 @@ class Classify():
         np.save('Weights', self.means)
 
     def load_weights(self):
-        self.means = np.load('./Weights.npy')
+        self.means = np.load('./utilities/Weights.npy')

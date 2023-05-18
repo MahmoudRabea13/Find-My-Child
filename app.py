@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request, jsonify, json
 import cv2
 import numpy as np
-from FaceDetection import FaceDetection
-from Classify import Classify
-from New_PCA import NPCA
+from utilities.FaceDetection import FaceDetection
+from utilities.Classify import Classify
+from utilities.New_PCA import NPCA
 app = Flask(__name__)
 Face = FaceDetection()
 Model = Classify()

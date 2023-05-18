@@ -64,7 +64,7 @@ class NPCA():
         np.save('vecs',np.array(self.eigen_vecs))
         np.save('vals',np.array(self.eigen_vals))
     def load_preprocessing(self):
-        data = np.load('pre.npy')
-        self.eigen_vals = np.load('vals.npy')
-        self.eigen_vecs = np.load('vecs.npy')
+        data = np.load('./utilities/pre.npy')
+        self.eigen_vals = np.load('./utilities/vals.npy')
+        self.eigen_vecs = np.load('./utilities/vecs.npy')
         self.mu,self.std_dev = data[0,:],data[1,:]
